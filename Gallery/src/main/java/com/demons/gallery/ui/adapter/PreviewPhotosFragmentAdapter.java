@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 import com.demons.gallery.constant.Type;
 import com.demons.gallery.result.Result;
 import com.demons.gallery.setting.Setting;

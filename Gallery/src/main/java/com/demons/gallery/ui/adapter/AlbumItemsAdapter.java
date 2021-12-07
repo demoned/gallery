@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 import com.demons.gallery.models.ad.AdViewHolder;
 import com.demons.gallery.models.album.entity.AlbumItem;
 import com.demons.gallery.setting.Setting;

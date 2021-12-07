@@ -10,7 +10,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 
 public class LoadingDialog extends Dialog {
 

@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 import com.demons.gallery.models.puzzle.PuzzleLayout;
 import com.demons.gallery.models.puzzle.SquarePuzzleView;
 import com.demons.gallery.models.puzzle.template.slant.NumberSlantLayout;

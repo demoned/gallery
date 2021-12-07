@@ -16,7 +16,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 import com.demons.gallery.models.sticker.cache.StickerCache;
 import com.demons.gallery.models.sticker.listener.OnStickerClickListener;
 

@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 
 /**
  * 广告viewolder

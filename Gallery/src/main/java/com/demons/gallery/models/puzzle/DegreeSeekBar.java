@@ -13,7 +13,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 
 public class DegreeSeekBar extends View {
     private static final String TAG = "DegreeSeekBar";

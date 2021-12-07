@@ -28,7 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.demons.gallery.Gallery;
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 import com.demons.gallery.constant.Code;
 import com.demons.gallery.constant.Key;
 import com.demons.gallery.engine.ImageEngine;

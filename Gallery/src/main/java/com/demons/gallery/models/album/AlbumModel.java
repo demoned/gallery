@@ -12,7 +12,7 @@ import android.text.TextUtils;
 
 import androidx.core.content.PermissionChecker;
 
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 import com.demons.gallery.constant.Type;
 import com.demons.gallery.models.album.entity.Album;
 import com.demons.gallery.models.album.entity.AlbumItem;

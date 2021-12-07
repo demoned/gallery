@@ -15,7 +15,7 @@ import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.demons.gallery.ImageSource;
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 import com.demons.gallery.SubsamplingScaleImageView;
 import com.demons.gallery.constant.Type;
 import com.demons.gallery.models.album.entity.Photo;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.huantansheng.easyphotos">
+    package="com.demons.gallery">
 
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -17,27 +17,27 @@
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true">
         <activity
-            android:name="com.demons.gallery.ui.PhotosActivity"
+            android:name=".ui.PhotosActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/EasyPhotosTheme" />
+            android:theme="@style/photos_theme" />
         <activity
-            android:name="com.demons.gallery.ui.PreviewActivity"
+            android:name=".ui.PreviewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/EasyPhotosFullscreenTheme" />
+            android:theme="@style/full_screen_theme" />
         <activity
-            android:name="com.demons.gallery.ui.PuzzleActivity"
+            android:name=".ui.PuzzleActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/EasyPhotosTheme"
+            android:theme="@style/photos_theme"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name="com.demons.gallery.ui.PuzzleSelectorActivity"
+            android:name=".ui.PuzzleSelectorActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/EasyPhotosTheme" />
+            android:theme="@style/photos_theme" />
     </application>
 
 </manifest>

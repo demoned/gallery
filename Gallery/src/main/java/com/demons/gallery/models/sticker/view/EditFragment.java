@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 
 /**
  * 文字贴纸，编辑界面

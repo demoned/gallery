@@ -23,7 +23,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.demons.gallery.Gallery;
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 import com.demons.gallery.models.sticker.listener.OnStickerClickListener;
 
 

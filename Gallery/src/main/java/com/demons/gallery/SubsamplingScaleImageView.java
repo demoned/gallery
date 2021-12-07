@@ -39,7 +39,7 @@ import com.demons.gallery.decoder.ImageDecoder;
 import com.demons.gallery.decoder.ImageRegionDecoder;
 import com.demons.gallery.decoder.SkiaImageDecoder;
 import com.demons.gallery.decoder.SkiaImageRegionDecoder;
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

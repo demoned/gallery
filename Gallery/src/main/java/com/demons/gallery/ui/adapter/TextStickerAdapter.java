@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 import com.demons.gallery.models.sticker.StickerModel;
 import com.demons.gallery.models.sticker.entity.TextStickerData;
 

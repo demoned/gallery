@@ -23,7 +23,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.huantansheng.easyphotos.R;
+import com.demons.gallery.R;
 import com.demons.gallery.constant.Code;
 import com.demons.gallery.models.album.AlbumModel;
 import com.demons.gallery.models.album.entity.Photo;
