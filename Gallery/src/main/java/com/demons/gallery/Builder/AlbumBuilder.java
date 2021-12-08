@@ -231,7 +231,6 @@ public class AlbumBuilder {
         Setting.complexSingleType = singleType;
         Setting.complexVideoCount = videoCount;
         Setting.complexPictureCount = pictureCount;
-        Setting.count = videoCount + pictureCount;
         Setting.showVideo = true;
         return AlbumBuilder.this;
     }
@@ -255,6 +254,17 @@ public class AlbumBuilder {
      */
     public AlbumBuilder setMinFileSize(long minFileSize) {
         Setting.minSize = minFileSize;
+        return AlbumBuilder.this;
+    }
+
+    /**
+     * 设置添加的照片视频总数
+     *
+     * @param count
+     * @return AlbumBuilder
+     */
+    public AlbumBuilder setFileCount(int count) {
+        Setting.count = count;
         return AlbumBuilder.this;
     }
 
@@ -299,11 +309,11 @@ public class AlbumBuilder {
     /**
      * 设置默认选择图片集合
      *
-     * @param selectedPhotos 默认选择图片集合
+     * @param selectedPhotos             默认选择图片集合
      * @param isSequentialSelectedPhotos 当传入已选中图片时，是否按照之前选中的顺序排序
      * @return AlbumBuilder
      */
-    public AlbumBuilder setSelectedPhotos(ArrayList<Photo> selectedPhotos,boolean isSequentialSelectedPhotos) {
+    public AlbumBuilder setSelectedPhotos(ArrayList<Photo> selectedPhotos, boolean isSequentialSelectedPhotos) {
         Setting.selectedPhotos.clear();
         Setting.isSequentialSelectedPhotos = isSequentialSelectedPhotos;
         if (selectedPhotos.isEmpty()) {
@@ -350,13 +360,13 @@ public class AlbumBuilder {
     /**
      * 设置默认选择图片地址集合
      *
-     * @param selectedPhotoPaths 默认选择图片地址集合
+     * @param selectedPhotoPaths         默认选择图片地址集合
      * @param isSequentialSelectedPhotos 当传入已选中图片时，是否按照之前选中的顺序排序
      * @return AlbumBuilder
      * @Deprecated android 10 不推荐使用直接使用Path方式，推荐使用Photo类
      */
     @Deprecated
-    public AlbumBuilder setSelectedPhotoPaths(ArrayList<String> selectedPhotoPaths,boolean isSequentialSelectedPhotos) {
+    public AlbumBuilder setSelectedPhotoPaths(ArrayList<String> selectedPhotoPaths, boolean isSequentialSelectedPhotos) {
         Setting.selectedPhotos.clear();
         Setting.isSequentialSelectedPhotos = isSequentialSelectedPhotos;
         ArrayList<Photo> selectedPhotos = new ArrayList<>();
