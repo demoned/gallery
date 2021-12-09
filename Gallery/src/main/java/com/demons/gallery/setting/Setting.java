@@ -1,6 +1,7 @@
 package com.demons.gallery.setting;
 
 import androidx.annotation.IntDef;
+
 import android.view.View;
 
 import com.demons.gallery.constant.Type;
@@ -23,6 +24,9 @@ public class Setting {
     public static int minHeight = 1;
     public static long minSize = 1;
     public static int count = 1;
+
+    public static int videoMaxSize = 50 * 1048576;
+    public static int photoMaxSize = 16 * 1048576;
 
     public static WeakReference<View> photosAdView = null;
     public static WeakReference<View> albumItemsAdView = null;

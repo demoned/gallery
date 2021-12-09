@@ -33,6 +33,7 @@ import com.demons.gallery.ui.adapter.PuzzleSelectorAdapter;
 import com.demons.gallery.ui.adapter.PuzzleSelectorPreviewAdapter;
 import com.demons.gallery.ui.widget.PressedTextView;
 import com.demons.gallery.utils.Color.ColorUtils;
+import com.demons.gallery.utils.ToastUtil;
 import com.demons.gallery.utils.system.SystemUtils;
 
 import java.util.ArrayList;
@@ -226,7 +227,7 @@ public class PuzzleSelectorActivity extends AppCompatActivity implements View.On
     @Override
     public void onPhotoClick(int position) {
         if (selectedPhotos.size() > 8) {
-            Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_image_hint_easy_photos, 9), Toast.LENGTH_SHORT).show();
+           ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_image_hint_easy_photos, 9));
             return;
         }
 

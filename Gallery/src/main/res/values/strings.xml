@@ -16,6 +16,10 @@
 
     <string name="selector_reach_max_hint_easy_photos">超出最大选择数</string>
 
+    <string name="selector_video_max_size">当前选择的视频超出大小限制</string>
+
+    <string name="selector_photo_max_size">当前选择的图片超出大小限制</string>
+
     <string name="selector_reach_max_image_hint_easy_photos">最多只能选择%d张图片</string>
 
     <string name="selector_reach_max_video_hint_easy_photos">最多只能选择%d个视频</string>

@@ -38,6 +38,7 @@ import com.demons.gallery.setting.Setting;
 import com.demons.gallery.ui.adapter.PreviewPhotosAdapter;
 import com.demons.gallery.ui.widget.PressedTextView;
 import com.demons.gallery.utils.Color.ColorUtils;
+import com.demons.gallery.utils.ToastUtil;
 import com.demons.gallery.utils.system.SystemUtils;
 
 import java.util.ArrayList;
@@ -303,7 +304,7 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
             updateSelector();
         } else if (R.id.tv_original == id) {
             if (!Setting.originalMenuUsable) {
-                Toast.makeText(getApplicationContext(), Setting.originalMenuUnusableHint, Toast.LENGTH_SHORT).show();
+                ToastUtil.show(getApplicationContext(), Setting.originalMenuUnusableHint);
                 return;
             }
             Setting.selectedOriginal = !Setting.selectedOriginal;
@@ -374,36 +375,46 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
                 return;
             }
             if (Setting.isOnlyVideo()) {
-                Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_video_hint_easy_photos
-                        , Setting.count), Toast.LENGTH_SHORT).show();
+                ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_video_hint_easy_photos
+                        , Setting.count));
 
             } else if (Setting.showVideo) {
-                Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_hint_easy_photos,
-                        Setting.count), Toast.LENGTH_SHORT).show();
+                ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_hint_easy_photos,
+                        Setting.count));
             } else {
-                Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_image_hint_easy_photos,
-                        Setting.count), Toast.LENGTH_SHORT).show();
+                ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_image_hint_easy_photos,
+                        Setting.count));
             }
             return;
         }
         item.selected = !item.selected;
         if (item.selected) {
+            if (item.type.contains(Type.VIDEO) && item.size > Setting.videoMaxSize) {
+                ToastUtil.show(this, R.string.selector_video_max_size);
+                item.selected = false;
+                return;
+            }
+            if (!item.type.contains(Type.VIDEO) && item.size > Setting.photoMaxSize) {
+                ToastUtil.show(this, R.string.selector_photo_max_size);
+                item.selected = false;
+                return;
+            }
             int res = Result.addPhoto(item);
             if (res != 0) {
                 item.selected = false;
                 switch (res) {
                     case Result.PICTURE_OUT:
-                        Toast.makeText(getApplicationContext(),
+                        ToastUtil.show(getApplicationContext(),
                                 getString(R.string.selector_reach_max_image_hint_easy_photos,
-                                        Setting.complexPictureCount), Toast.LENGTH_SHORT).show();
+                                        Setting.complexPictureCount));
                         break;
                     case Result.VIDEO_OUT:
-                        Toast.makeText(getApplicationContext(),
+                        ToastUtil.show(getApplicationContext(),
                                 getString(R.string.selector_reach_max_video_hint_easy_photos,
-                                        Setting.complexVideoCount), Toast.LENGTH_SHORT).show();
+                                        Setting.complexVideoCount));
                         break;
                     case Result.SINGLE_TYPE:
-                        Toast.makeText(getApplicationContext(), getString(R.string.selector_single_type_hint_easy_photos), Toast.LENGTH_SHORT).show();
+                        ToastUtil.show(getApplicationContext(), getString(R.string.selector_single_type_hint_easy_photos));
                         break;
                 }
                 return;

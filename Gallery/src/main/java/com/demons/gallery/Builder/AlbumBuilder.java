@@ -269,6 +269,28 @@ public class AlbumBuilder {
     }
 
     /**
+     * 设置视频最大限制
+     *
+     * @param videoMaxSize
+     * @return AlbumBuilder
+     */
+    public AlbumBuilder setVideoMaxSize(int videoMaxSize) {
+        Setting.videoMaxSize = videoMaxSize;
+        return AlbumBuilder.this;
+    }
+
+    /**
+     * 设置照片最大限制
+     *
+     * @param photoMaxSize
+     * @return AlbumBuilder
+     */
+    public AlbumBuilder setPhotoMaxSize(int photoMaxSize) {
+        Setting.photoMaxSize = photoMaxSize;
+        return AlbumBuilder.this;
+    }
+
+    /**
      * 设置显示照片的最小宽度
      *
      * @param minWidth 照片的最小宽度，单位Px

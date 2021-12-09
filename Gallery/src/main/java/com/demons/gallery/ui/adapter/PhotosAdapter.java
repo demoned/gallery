@@ -1,6 +1,7 @@
 package com.demons.gallery.ui.adapter;
 
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.demons.gallery.R;
 import com.demons.gallery.constant.Type;
@@ -20,6 +22,7 @@ import com.demons.gallery.models.album.entity.Photo;
 import com.demons.gallery.result.Result;
 import com.demons.gallery.setting.Setting;
 import com.demons.gallery.ui.widget.PressedImageView;
+import com.demons.gallery.utils.ToastUtil;
 import com.demons.gallery.utils.media.DurationUtils;
 
 import java.lang.ref.WeakReference;
@@ -39,11 +42,13 @@ public class PhotosAdapter extends RecyclerView.Adapter {
     private OnClickListener listener;
     private boolean unable, isSingle;
     private int singlePosition;
+    private Context cxt;
 
     private boolean clearAd = false;
 
 
     public PhotosAdapter(Context cxt, ArrayList<Object> dataList, OnClickListener listener) {
+        this.cxt = cxt;
         this.dataList = dataList;
         this.listener = listener;
         this.mInflater = LayoutInflater.from(cxt);
@@ -137,6 +142,16 @@ public class PhotosAdapter extends RecyclerView.Adapter {
                     }
                     item.selected = !item.selected;
                     if (item.selected) {
+                        if (item.type.contains(Type.VIDEO) && item.size > Setting.videoMaxSize) {
+                            ToastUtil.show(cxt, R.string.selector_video_max_size);
+                            item.selected = false;
+                            return;
+                        }
+                        if (!item.type.contains(Type.VIDEO) && item.size > Setting.photoMaxSize) {
+                            ToastUtil.show(cxt, R.string.selector_photo_max_size);
+                            item.selected = false;
+                            return;
+                        }
                         int res = Result.addPhoto(item);
                         if (res != 0) {
                             listener.onSelectorOutOfMax(res);
