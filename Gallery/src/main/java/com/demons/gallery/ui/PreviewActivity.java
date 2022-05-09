@@ -462,7 +462,7 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
                 tvDone.startAnimation(scaleShow);
             }
             flFragment.setVisibility(View.VISIBLE);
-            tvDone.setVisibility(View.VISIBLE);
+//            tvDone.setVisibility(View.VISIBLE);
 
             if (Result.isEmpty()) {
                 return;
