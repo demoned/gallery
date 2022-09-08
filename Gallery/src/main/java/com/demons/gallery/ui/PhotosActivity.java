@@ -184,7 +184,7 @@ public class PhotosActivity extends AppCompatActivity implements AlbumItemsAdapt
         if (Setting.isOnlyVideo()) {
             tvTitle.setText(R.string.video_selection_easy_photos);
         }
-        findViewById(R.id.iv_second_menu).setVisibility(Setting.showPuzzleMenu || Setting.showCleanMenu || Setting.showOriginalMenu ? View.VISIBLE : View.GONE);
+        findViewById(R.id.iv_second_menu).setVisibility(Setting.showBottomMenu? View.VISIBLE : View.GONE);
         setClick(R.id.iv_back);
     }
 

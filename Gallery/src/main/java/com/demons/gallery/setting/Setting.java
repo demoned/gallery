@@ -60,6 +60,7 @@ public class Setting {
     public static int complexPictureCount = 0;
     //当传入已选中图片时，是否按照之前选中的顺序排序
     public static boolean isSequentialSelectedPhotos = true;
+    public static boolean showBottomMenu = true;
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(value = {LIST_FIRST, BOTTOM_RIGHT})

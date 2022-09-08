@@ -519,6 +519,18 @@ public class AlbumBuilder {
         return AlbumBuilder.this;
     }
 
+    /**
+     * 相册选择页是否显示底部编辑按钮
+     *
+     * @param showBottomMenu
+     * @return
+     */
+    public AlbumBuilder showBottomMenu(boolean showBottomMenu) {
+        Setting.showBottomMenu = showBottomMenu;
+        return AlbumBuilder.this;
+    }
+
+
     private void setSettingParams() {
         switch (startupType) {
             case CAMERA:

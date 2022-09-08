@@ -72,7 +72,7 @@ public class PreviewPhotosAdapter extends RecyclerView.Adapter<PreviewPhotosAdap
             holder.ivPlay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    toPlayVideo(v, uri, type);
+                    toPlayVideo(v, path, type);
                 }
             });
         } else if (path.endsWith(Type.GIF) || type.endsWith(Type.GIF)) {
@@ -123,26 +123,20 @@ public class PreviewPhotosAdapter extends RecyclerView.Adapter<PreviewPhotosAdap
         });
     }
 
-    private void toPlayVideo(View v, Uri uri, String type) {
+    private void toPlayVideo(View v, String path, String type) {
         Context context = v.getContext();
         Intent intent = new Intent(Intent.ACTION_VIEW);
+        File file = new File(path);
+        Uri uri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            uri = FileProvider.getUriForFile(context, Setting.fileProviderAuthority, file);
+        } else {
+            uri = Uri.parse(path);
         }
         intent.setDataAndType(uri, type);
         context.startActivity(intent);
-    }
-
-    private Uri getUri(Context context, String path, Intent intent) {
-        File file = new File(path);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-            return FileProvider.getUriForFile(context, Setting.fileProviderAuthority, file);
-        } else {
-            return Uri.fromFile(file);
-        }
     }
 
     @Override
