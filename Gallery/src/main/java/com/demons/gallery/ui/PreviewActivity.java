@@ -12,16 +12,19 @@ import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckBox;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
@@ -39,6 +42,7 @@ import com.demons.gallery.ui.adapter.PreviewPhotosAdapter;
 import com.demons.gallery.ui.widget.PressedTextView;
 import com.demons.gallery.utils.Color.ColorUtils;
 import com.demons.gallery.utils.ToastUtil;
+import com.demons.gallery.utils.file.FileUtils;
 import com.demons.gallery.utils.system.SystemUtils;
 
 import java.util.ArrayList;
@@ -68,7 +72,7 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
             SystemUtils.getInstance().systemUiHide(PreviewActivity.this, decorView);
         }
     };
-    private RelativeLayout mBottomBar;
+    private ConstraintLayout mBottomBar;
     private FrameLayout mToolBar;
     private final Runnable mShowPart2Runnable = new Runnable() {
         @Override
@@ -80,7 +84,9 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
     };
     private boolean mVisible;
     View decorView;
-    private TextView tvOriginal, tvNumber;
+    private TextView tvNumber;
+    private AppCompatCheckBox tvOriginal;
+    private TextView originalAllSize;
     private PressedTextView tvDone;
     private ImageView ivSelector;
     private RecyclerView rvPhotos;
@@ -230,28 +236,40 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
 
         mToolBar = (FrameLayout) findViewById(R.id.m_top_bar_layout);
         if (!SystemUtils.getInstance().hasNavigationBar(this)) {
-            FrameLayout mRootView = (FrameLayout) findViewById(R.id.m_root_view);
+            LinearLayoutCompat mRootView = (LinearLayoutCompat) findViewById(R.id.m_root_view);
             mRootView.setFitsSystemWindows(true);
             mToolBar.setPadding(0, SystemUtils.getInstance().getStatusBarHeight(this), 0, 0);
             if (ColorUtils.isWhiteColor(statusColor)) {
                 SystemUtils.getInstance().setStatusDark(this, true);
             }
         }
-        mBottomBar = (RelativeLayout) findViewById(R.id.m_bottom_bar);
+        mBottomBar = (ConstraintLayout) findViewById(R.id.m_bottom_bar);
         ivSelector = (ImageView) findViewById(R.id.iv_selector);
         tvNumber = (TextView) findViewById(R.id.tv_number);
         tvDone = (PressedTextView) findViewById(R.id.tv_done);
-        tvOriginal = (TextView) findViewById(R.id.tv_original);
+        originalAllSize = (TextView) findViewById(R.id.original_all_size);
+        tvOriginal = (AppCompatCheckBox) findViewById(R.id.tv_original);
+        tvOriginal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Setting.selectedOriginal = isChecked;
+                if (isChecked) {
+                    originalAllSize.setVisibility(View.VISIBLE);
+                } else {
+                    originalAllSize.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
         flFragment = (FrameLayout) findViewById(R.id.fl_fragment);
         previewFragment =
                 (PreviewFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_preview);
         if (Setting.showOriginalMenu) {
-            processOriginalMenu();
+            tvOriginal.setChecked(Setting.selectedOriginal);
         } else {
             tvOriginal.setVisibility(View.GONE);
         }
 
-        setClick(tvOriginal, tvDone, ivSelector);
+        setClick(tvDone, ivSelector);
 
         initRecyclerView();
         shouldShowMenuDone();
@@ -302,13 +320,6 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
             updateSelector();
         } else if (R.id.iv_selector == id) {
             updateSelector();
-        } else if (R.id.tv_original == id) {
-            if (!Setting.originalMenuUsable) {
-                ToastUtil.show(getApplicationContext(), Setting.originalMenuUnusableHint);
-                return;
-            }
-            Setting.selectedOriginal = !Setting.selectedOriginal;
-            processOriginalMenu();
         } else if (R.id.tv_done == id) {
             if (clickDone) return;
             clickDone = true;
@@ -316,25 +327,6 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
             intent.putExtra(Key.PREVIEW_CLICK_DONE, true);
             setResult(RESULT_OK, intent);
             finish();
-        }
-//        else if (R.id.m_bottom_bar == id) {
-//
-//        } else if (R.id.tv_edit == id) {
-//
-//        }
-    }
-
-    private void processOriginalMenu() {
-        if (Setting.selectedOriginal) {
-            tvOriginal.setTextColor(ContextCompat.getColor(this, R.color.photos_fg_accent));
-        } else {
-            if (Setting.originalMenuUsable) {
-                tvOriginal.setTextColor(ContextCompat.getColor(this,
-                        R.color.photos_fg_primary));
-            } else {
-                tvOriginal.setTextColor(ContextCompat.getColor(this,
-                        R.color.photos_fg_primary_dark));
-            }
         }
     }
 
@@ -361,6 +353,7 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
     private void updateSelector() {
         resultCode = RESULT_OK;
         Photo item = photos.get(lastPosition);
+        item.selectedOriginal = Setting.selectedOriginal;
         if (isSingle) {
             singleSelector(item);
             return;
@@ -430,6 +423,18 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
             }
         }
         toggleSelector();
+
+        getAllSize();
+    }
+
+    private void getAllSize() {
+        long allSize = 0;
+        for (Photo i : photos) {
+            if(i.selected){
+                allSize = allSize + i.size;
+            }
+        }
+        originalAllSize.setText(String.format("共%s", FileUtils.getReadableFileSize((int) allSize)));
     }
 
     private void singleSelector(Photo photo) {
@@ -462,7 +467,7 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
                 tvDone.startAnimation(scaleShow);
             }
             flFragment.setVisibility(View.VISIBLE);
-//            tvDone.setVisibility(View.VISIBLE);
+            tvDone.setVisibility(View.VISIBLE);
 
             if (Result.isEmpty()) {
                 return;
