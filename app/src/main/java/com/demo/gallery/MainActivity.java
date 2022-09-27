@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.camera://单独使用相机
 
                 Gallery.createCamera(this, true)
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .start(101);//也可以选择链式调用写法
 
                 break;
@@ -191,14 +191,14 @@ public class MainActivity extends AppCompatActivity
             case R.id.album_camera_single://相册单选，有相机功能
 
                 Gallery.createAlbum(this, true, false, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .start(101);//也可以选择链式调用写法
                 break;
 
             case R.id.album_camera_multi://相册多选，有相机功能
 
                 Gallery.createAlbum(this, true, false, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .setCount(22)
                         .start(new SelectCallback() {
                             @Override
@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.album_camera_multi_use_width:// 正确的宽高数据，链式调用写法
 
                 Gallery.createAlbum(this, true, true, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .setCount(22)
                         .start(new SelectCallback() {
                             @Override
@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.album_complex_selector1:// 复杂选择器，最多选择2个视频3张图片
                 Gallery.createAlbum(this, false, false, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .complexSelector(false, 3, 9)//参数说明：是否只能选择单类型，视频数，图片数。
                         .setFileCount(9)
                         .start(new SelectCallback() {
@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.album_complex_selector2:// 复杂选择器，根据用户选择的第一个文件类型，确定用户只能选择的文件类型，视频只能选择2个，图片只能选择3个
                 Gallery.createAlbum(this, false, false, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .complexSelector(true, 2, 3)//参数说明：是否只能选择单类型，视频数，图片数。
                         .start(new SelectCallback() {
                             @Override
@@ -286,7 +286,7 @@ public class MainActivity extends AppCompatActivity
 
                 //启动方法，装载广告view
                 Gallery.createAlbum(this, true, false, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .setCount(9)
                         .setCameraLocation(Setting.LIST_FIRST)
                         .setAdView(photosAdView, photosAdLoaded, albumItemsAdView,
@@ -302,7 +302,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.album_size://只显示限制尺寸或限制文件大小以上的图片
 
                 Gallery.createAlbum(this, true, false, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .setCount(9)
                         .setMinWidth(500)
                         .setMinHeight(500)
@@ -314,7 +314,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.album_original_usable://显示原图按钮，并且默认选中，按钮可用
 
                 Gallery.createAlbum(this, true, false, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .setCount(9)
                         .setOriginalMenu(true, true, null)
                         .start(101);
@@ -326,7 +326,7 @@ public class MainActivity extends AppCompatActivity
                 boolean isVip = false;//假设获取用户信息发现该用户不是vip
 
                 Gallery.createAlbum(this, true, false, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .setCount(9)
                         .setOriginalMenu(false, isVip, "该功能为VIP会员特权功能")
                         .start(101);
@@ -335,7 +335,7 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.album_has_video_gif://相册中显示视频和gif图
                 Gallery.createAlbum(this, true, false, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .setCount(9)
                         .setVideo(true)
                         .setGif(true)
@@ -344,7 +344,7 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.album_only_video://相册中只选择视频(相册只有视频 会禁用相机和拼图)
                 Gallery.createAlbum(this, true, true, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .setCount(9)
                         .filter(Type.VIDEO)
                         .start(101);
@@ -352,7 +352,7 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.album_no_menu://相册中不显示底部的编辑图标按钮
                 Gallery.createAlbum(this, true, false, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .setCount(9)
                         .setPuzzleMenu(false)
                         .setCleanMenu(false)
@@ -362,7 +362,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.album_selected://相册中包含默认勾选图片
 
                 Gallery.createAlbum(this, true, false, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .setPuzzleMenu(false)
                         .setCount(9)
                         .setSelectedPhotos(selectedPhotoList)//当传入已选中图片时，按照之前选中的顺序排序
@@ -375,7 +375,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.addWatermark: //给图片添加水印
 
                 Gallery.createAlbum(this, false, true, GlideEngine.getInstance())
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .setPuzzleMenu(false)
                         .start(new SelectCallback() {
                             @Override
@@ -414,7 +414,7 @@ public class MainActivity extends AppCompatActivity
                 Gallery.createAlbum(this, false, false, GlideEngine.getInstance())
                         .setCount(9)
                         .setPuzzleMenu(false)
-                        .setFileProviderAuthority(getApplicationInfo().packageName + ".FileProvider")
+                        .setFileProviderAuthority(getApplicationInfo().packageName + ".fileProvider")
                         .start(new SelectCallback() {
                             @Override
                             public void onResult(ArrayList<Photo> photos, boolean isOriginal) {

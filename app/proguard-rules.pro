@@ -19,3 +19,12 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-dontwarn com.xiaomi.mipush.sdk.**
+-keep public class com.xiaomi.mipush.sdk.* {*; }
+-keep public class com.google.firebase.* {*;}
+#-keep public class com.tqxd.guard.support.entity.* {*;}
+-keepclasseswithmembernames class * { # 保持 native 方法不被混淆
+native <methods>;
+}
+-keep public class com.tencent.aai.*
+-keep public class com.qq.wx.voice.*

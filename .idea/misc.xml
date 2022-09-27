@@ -6,6 +6,26 @@
         <entry key="..\:/AndroidCode/TestCode/gallery/Gallery/src/main/res/drawable/shape_toast.xml" value="0.18518518518518517" />
         <entry key="..\:/AndroidCode/TestCode/gallery/Gallery/src/main/res/layout/activity_preview.xml" value="0.24947916666666667" />
         <entry key="..\:/AndroidCode/TestCode/gallery/Gallery/src/main/res/layout/layout_toast.xml" value="0.1425925925925926" />
+        <entry key="..\:/Users/yangqian/Downloads/gallery/Gallery/src/main/res/drawable/bg_menu_done_easy_photos.xml" value="0.27" />
+        <entry key="..\:/Users/yangqian/Downloads/gallery/Gallery/src/main/res/drawable/bg_select.xml" value="0.27" />
+        <entry key="..\:/Users/yangqian/Downloads/gallery/Gallery/src/main/res/drawable/bg_selected_original.xml" value="0.27" />
+        <entry key="..\:/Users/yangqian/Downloads/gallery/Gallery/src/main/res/drawable/ic_baseline_check_circle_outline_24.xml" value="0.27" />
+        <entry key="..\:/Users/yangqian/Downloads/gallery/Gallery/src/main/res/drawable/ic_baseline_radio_button_checked_24.xml" value="0.27" />
+        <entry key="..\:/Users/yangqian/Downloads/gallery/Gallery/src/main/res/drawable/ic_baseline_radio_button_unchecked_24.xml" value="0.27" />
+        <entry key="..\:/Users/yangqian/Downloads/gallery/Gallery/src/main/res/drawable/ic_selector_easy_photos.xml" value="0.27" />
+        <entry key="..\:/Users/yangqian/Downloads/gallery/Gallery/src/main/res/drawable/ic_selector_true_easy_photos.xml" value="0.27" />
+        <entry key="..\:/Users/yangqian/Downloads/gallery/Gallery/src/main/res/drawable/selector_original.xml" value="0.27" />
+        <entry key="..\:/Users/yangqian/Downloads/gallery/Gallery/src/main/res/layout/activity_photos.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/yangqian/Downloads/gallery/Gallery/src/main/res/layout/activity_preview.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/yangqian/Downloads/gallery/Gallery/src/main/res/layout/fragment_preview.xml" value="0.36614583333333334" />
+        <entry key="..\:/code/gallery/Gallery/src/main/res/drawable/bg_normal_original.xml" value="0.1955" />
+        <entry key="..\:/code/gallery/Gallery/src/main/res/drawable/bg_selected_original.xml" value="0.1955" />
+        <entry key="..\:/code/gallery/Gallery/src/main/res/drawable/selector_original.xml" value="0.27" />
+        <entry key="..\:/code/gallery/Gallery/src/main/res/layout/activity_preview.xml" value="0.25" />
+        <entry key="..\:/code/gallery/Gallery/src/main/res/layout/fragment_preview.xml" value="0.36614583333333334" />
+        <entry key="..\:/code/gallery/Gallery/src/main/res/layout/item_preview_photo.xml" value="0.36614583333333334" />
+        <entry key="..\:/code/gallery/Gallery/src/main/res/layout/item_preview_selected_photos.xml" value="0.14947916666666666" />
+        <entry key="..\:/code/gallery/app/src/main/res/menu/activity_sample_drawer.xml" value="0.1875" />
       </map>
     </option>
   </component>
