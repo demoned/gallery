@@ -51,6 +51,7 @@ import com.demons.gallery.constant.Key;
 import com.demons.gallery.constant.Type;
 import com.demons.gallery.models.ad.AdListener;
 import com.demons.gallery.models.album.AlbumModel;
+import com.demons.gallery.models.album.entity.AlbumItem;
 import com.demons.gallery.models.album.entity.Photo;
 import com.demons.gallery.result.Result;
 import com.demons.gallery.setting.Setting;
@@ -184,7 +185,7 @@ public class PhotosActivity extends AppCompatActivity implements AlbumItemsAdapt
         if (Setting.isOnlyVideo()) {
             tvTitle.setText(R.string.video_selection_easy_photos);
         }
-        findViewById(R.id.iv_second_menu).setVisibility(Setting.showBottomMenu? View.VISIBLE : View.GONE);
+        findViewById(R.id.iv_second_menu).setVisibility(Setting.showBottomMenu ? View.VISIBLE : View.GONE);
         setClick(R.id.iv_back);
     }
 
@@ -328,10 +329,10 @@ public class PhotosActivity extends AppCompatActivity implements AlbumItemsAdapt
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);//将拍取的照片保存到指定URI
                 startActivityForResult(cameraIntent, requestCode);
             } else {
-               ToastUtil.show(getApplicationContext(), R.string.camera_temp_file_error_easy_photos);
+                ToastUtil.show(getApplicationContext(), R.string.camera_temp_file_error_easy_photos);
             }
         } else {
-           ToastUtil.show(getApplicationContext(), R.string.msg_no_camera_easy_photos);
+            ToastUtil.show(getApplicationContext(), R.string.msg_no_camera_easy_photos);
         }
     }
 
@@ -478,11 +479,16 @@ public class PhotosActivity extends AppCompatActivity implements AlbumItemsAdapt
         }
 
         String albumItem_all_name = albumModel.getAllAlbumName(this);
-        albumModel.album.getAlbumItem(albumItem_all_name).addImageItem(0, photo);
+        AlbumItem albumItem = albumModel.album.getAlbumItem(albumItem_all_name);
+        if (albumItem != null) {
+            albumItem.addImageItem(0, photo);
+        }
 
         albumModel.album.addAlbumItem(albumName, folderPath, photo.path, photo.uri);
-        albumModel.album.getAlbumItem(albumName).addImageItem(0, photo);
-
+        AlbumItem albumItem1 = albumModel.album.getAlbumItem(albumName);
+        if (albumItem1 != null) {
+            albumModel.album.getAlbumItem(albumName).addImageItem(0, photo);
+        }
         albumItemList.clear();
         albumItemList.addAll(albumModel.getAlbumItems());
         if (Setting.hasAlbumItemsAd()) {
@@ -680,11 +686,11 @@ public class PhotosActivity extends AppCompatActivity implements AlbumItemsAdapt
 
         if (albumModel.getAlbumItems().isEmpty()) {
             if (Setting.isOnlyVideo()) {
-               ToastUtil.show(getApplicationContext(), R.string.no_videos_easy_photos);
+                ToastUtil.show(getApplicationContext(), R.string.no_videos_easy_photos);
                 finish();
                 return;
             }
-           ToastUtil.show(getApplicationContext(), R.string.no_photos_easy_photos);
+            ToastUtil.show(getApplicationContext(), R.string.no_photos_easy_photos);
             if (Setting.isShowCamera) launchCamera(Code.REQUEST_CAMERA);
             else finish();
             return;
@@ -798,7 +804,7 @@ public class PhotosActivity extends AppCompatActivity implements AlbumItemsAdapt
             processSecondMenu();
         } else if (R.id.tv_original == id) {
             if (!Setting.originalMenuUsable) {
-               ToastUtil.show(getApplicationContext(), Setting.originalMenuUnusableHint);
+                ToastUtil.show(getApplicationContext(), Setting.originalMenuUnusableHint);
                 return;
             }
             Setting.selectedOriginal = !Setting.selectedOriginal;
@@ -1026,28 +1032,28 @@ public class PhotosActivity extends AppCompatActivity implements AlbumItemsAdapt
     public void onSelectorOutOfMax(@Nullable Integer result) {
         if (result == null) {
             if (Setting.isOnlyVideo()) {
-               ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_video_hint_easy_photos
+                ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_video_hint_easy_photos
                         , Setting.count));
 
             } else if (Setting.showVideo) {
-               ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_hint_easy_photos));
+                ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_hint_easy_photos));
             } else {
-               ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_image_hint_easy_photos,
+                ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_image_hint_easy_photos,
                         Setting.count));
             }
             return;
         }
         switch (result) {
             case Result.PICTURE_OUT:
-               ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_image_hint_easy_photos
+                ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_image_hint_easy_photos
                         , Setting.complexPictureCount));
                 break;
             case Result.VIDEO_OUT:
-               ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_video_hint_easy_photos
+                ToastUtil.show(getApplicationContext(), getString(R.string.selector_reach_max_video_hint_easy_photos
                         , Setting.complexVideoCount));
                 break;
             case Result.SINGLE_TYPE:
-               ToastUtil.show(getApplicationContext(), getString(R.string.selector_single_type_hint_easy_photos));
+                ToastUtil.show(getApplicationContext(), getString(R.string.selector_single_type_hint_easy_photos));
                 break;
 
         }
