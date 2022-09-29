@@ -19,16 +19,19 @@
         <activity
             android:name=".ui.PhotosActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/photos_theme" />
         <activity
             android:name=".ui.PreviewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/full_screen_theme" />
         <activity
             android:name=".ui.PuzzleActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/photos_theme"
             android:windowSoftInputMode="adjustPan" />
@@ -36,6 +39,7 @@
         <activity
             android:name=".ui.PuzzleSelectorActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/photos_theme" />
     </application>

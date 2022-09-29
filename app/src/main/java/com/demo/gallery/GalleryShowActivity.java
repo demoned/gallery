@@ -103,7 +103,7 @@ public class GalleryShowActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Gallery.createAlbum(PlaceholderFragment.this, true,false,
-                            GlideEngine.getInstance()).setFileProviderAuthority("com.demo.gallery.fileprovider.fileprovider").start(0);
+                            new GlideEngine()).setFileProviderAuthority("com.demo.gallery.fileprovider.fileprovider").start(0);
                 }
             });
 
