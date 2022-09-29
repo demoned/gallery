@@ -4,7 +4,7 @@
     <string name="selector_folder_all_video_photo_easy_photos">사진 및 비디오</string>
     <string name="selector_folder_video_easy_photos">모든 비디오</string>
     <string name="selector_easy_photos">선택</string>
-    <string name="selector_action_done_easy_photos">완료(%1d%2d)</string>
+    <string name="selector_action_done_easy_photos">완료(%1$d/%2$d)</string>
     <string name="selector_preview_easy_photos">미리보기</string>
     <string name="selector_reach_max_hint_easy_photos">최대 선택 항목 초과</string>
     <string name="selector_video_max_size">현재 선택한 동영상이 크기 제한을 초과했습니다.</string>

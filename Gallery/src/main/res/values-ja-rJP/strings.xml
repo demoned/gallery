@@ -4,7 +4,7 @@
     <string name="selector_folder_all_video_photo_easy_photos">写真とビデオ</string>
     <string name="selector_folder_video_easy_photos">すべてのビデオ</string>
     <string name="selector_easy_photos">選択</string>
-    <string name="selector_action_done_easy_photos">完了(%1d%2d)</string>
+    <string name="selector_action_done_easy_photos">完了(%1$d/%2$d)</string>
     <string name="selector_preview_easy_photos">プレビュー</string>
     <string name="selector_reach_max_hint_easy_photos">最大選択数を超えました</string>
     <string name="selector_video_max_size">現在選択されているビデオはサイズ制限を超えています</string>
