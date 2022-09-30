@@ -1,25 +1,43 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+group = 'com.github.jitpack'
+version = '1.0'
+
 android {
     compileSdkVersion 31
 
     defaultConfig {
         minSdk 21
         targetSdk 31
-    }
-
-    compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
+        versionCode 1
+        versionName "1.0"
     }
 }
 
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.exifinterface:exifinterface:1.1.0'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.jitpack'
+                artifactId = 'demons.gallery'
+                version = '2.0.6'
+            }
+        }
+    }
 }
