@@ -1,10 +1,6 @@
 plugins {
     id 'com.android.library'
-    id 'maven-publish'
 }
-
-group = 'com.github.jitpack'
-version = '1.0'
 
 android {
     compileSdkVersion 31
@@ -12,8 +8,6 @@ android {
     defaultConfig {
         minSdk 21
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
     }
 }
 
@@ -26,18 +20,4 @@ dependencies {
 
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.exifinterface:exifinterface:1.1.0'
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.jitpack'
-                artifactId = 'demons.gallery'
-                version = '2.0.6'
-            }
-        }
-    }
 }
