@@ -844,10 +844,10 @@ public class PhotosActivity extends AppCompatActivity implements AlbumItemsAdapt
     private void done() {
         if (clickDone) return;
         clickDone = true;
-        if (Setting.useWidth) {
-            resultUseWidth();
-            return;
-        }
+//        if (Setting.useWidth) {
+//            resultUseWidth();
+//            return;
+//        }
         resultFast();
     }
 
