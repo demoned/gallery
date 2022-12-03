@@ -41,5 +41,5 @@ dependencies {
     }
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation project(':Gallery')
-//    implementation 'com.github.demoned:gallery:2.0.2'
+//    implementation 'com.github.demoned:gallery:2.0.4'
 }
